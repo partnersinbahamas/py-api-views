@@ -5,8 +5,15 @@ from rest_framework.generics import get_object_or_404, GenericAPIView
 from rest_framework.response import Response
 from rest_framework import mixins
 
+
 from cinema.models import Actor, Genre, CinemaHall, Movie
-from cinema.serializers import ActorSerializer, GenreSerializer, CinemaHallSerializer, MovieSerializer
+from cinema.serializers import (
+    ActorSerializer,
+    GenreSerializer,
+    CinemaHallSerializer,
+    MovieSerializer
+)
+
 
 class ActorList(
     GenericAPIView,
@@ -89,7 +96,6 @@ class GenreDetail(views.APIView):
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-
     def delete(self, request: HttpRequest, pk: int) -> Response:
         genre = self.get_object(pk)
         genre.delete()
@@ -113,6 +119,3 @@ class CinemaHallViewSet(
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
-
-
-

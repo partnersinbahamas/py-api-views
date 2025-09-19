@@ -6,19 +6,19 @@ from .models import Actor, Genre, Movie, CinemaHall
 class ActorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Actor
-        fields = ('id', 'first_name', 'last_name')
+        fields = ("id", "first_name", "last_name")
 
 
 class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
-        fields = ('id', 'name')
+        fields = ("id", "name")
 
 
 class CinemaHallSerializer(serializers.ModelSerializer):
     class Meta:
         model = CinemaHall
-        fields = ('id', 'name', 'rows', 'seats_in_row')
+        fields = ("id", "name", "rows", "seats_in_row")
 
 
 class MovieSerializer(serializers.Serializer):
@@ -42,8 +42,8 @@ class MovieSerializer(serializers.Serializer):
         return Movie.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        actors = validated_data.pop('actors', None)
-        genres = validated_data.pop('genres', None)
+        actors = validated_data.pop("actors", None)
+        genres = validated_data.pop("genres", None)
 
         instance.title = validated_data.get("title", instance.title)
         instance.description = validated_data.get(

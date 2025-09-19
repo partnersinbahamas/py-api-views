@@ -9,7 +9,7 @@ class Actor(models.Model):
         return f"{self.first_name} {self.last_name}"
 
     class Meta:
-        ordering = ['last_name']
+        ordering = ["last_name"]
 
 
 class Genre(models.Model):
